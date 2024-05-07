@@ -17,3 +17,6 @@ npm install
 npx jest
 ```
 ***
+Notes:
+nodemailer was utilised with a dummy email to simulate the sending of emails, however due to security reasons, the dummy email's password is stored in a .env file locally
+and not tracked by git.
