@@ -1,0 +1,27 @@
+[
+  {
+    "id": "cd98c56f-afb9-4f89-9f84-92610ff83683",
+    "email": "john@gmail.com",
+    "phoneNumber": "12345678"
+  },
+  {
+    "id": "cd98c56f-afb9-4f89-9f84-92610ff84684",
+    "email": "jane@gmail.com",
+    "phoneNumber": "98765432"
+  },
+  {
+    "id": "cd97c56f-afb9-4f89-9f84-92610ff83685",
+    "email": "jim@gmail.com",
+    "phoneNumber": "43215678"
+  },
+  {
+    "id": "cd98c56f-afb9-4f89-9f84-92610ff83686",
+    "email": "jen@gmail.com",
+    "phoneNumber": "78906543"
+  },
+  {
+    "id": "cd98c56f-afb9-4f89-9f84-92610ff83687",
+    "email": "tom@gmail.com",
+    "phoneNumber": "34567890"
+  }
+]
