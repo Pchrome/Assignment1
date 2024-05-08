@@ -21,11 +21,11 @@ npx jest
 Deployment To Cloud:
 Using Vercel Free Tier services to host the project on the cloud
 Deployment can be done through the vercel user interface
-1.Log in to your Vercel account.
-2.Click on the "Import Project" button.
-3.Follow the prompts to import your project from Git or by uploading your project files.
-4.Configure deployment settings (like environment variables etc.).
-5.Click on the "Deploy" button to deploy your project.
+1. Log in to your Vercel account.
+2. Click on the "Import Project" button.
+3. Follow the prompts to import your project from Git or by uploading your project files.
+4. Configure deployment settings (like environment variables etc.).
+5. Click on the "Deploy" button to deploy your project.
 ***
 
 Notes:
