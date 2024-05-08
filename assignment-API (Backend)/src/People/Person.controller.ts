@@ -8,52 +8,41 @@ const emailService = new EmailService(); /** Dependency Service class to send em
 const personService = new PeopleService(emailService);
 
 export const getPersonById = async (req: Request, res: Response) => {
-    const id = req.params.id;
-    const person = await personService.getPersonById(id);
-    
-    if (!person) {
-      Logger.error(`Person with ID ${id} not found.`);
-      res.status(404).json({ error: 'Person not found' });
+  Logger.info(`[${req.method}] ${req.url}`);
+  const id = req.params.id;
+  const person = await personService.getPersonById(id);
+  if (!person) {
+    Logger.error(`Person with ID ${id} not found.`);
+    res.status(404).json({ error: 'Person not found' });
 
-    } else {
-      Logger.info(`Person with ID ${id} found.`);
-      res.json({ data: person, status: "success" });
-    }
-  };
+  } else {
+    Logger.info(`Person with ID ${id} found.`);
+    res.json({ data: person, status: "success" });
+  }
+};
   
 export const addPerson = async (req: Request, res: Response)=> {
-    const { email, phoneNumber } = req.body;
-    if (!email || !phoneNumber) { /** Ensure that request contains required persons attributes */
-      Logger.error(`Email and phoneNumber are required`);
-      res.status(400).json({ error: 'Email and phoneNumber are required' });
-      return;
-    }
-    const newPerson = await personService.addPerson(email, phoneNumber);
-    Logger.info(`Person added: ${JSON.stringify(newPerson)}`);
-    res.json({ data: newPerson, status: "success" });
-  };
+  const { email, phoneNumber } = req.body;
+  const newPerson = await personService.addPerson(email, phoneNumber);
+  Logger.info(`Person added: ${JSON.stringify(newPerson)}`);
+  res.json({ data: newPerson, status: "success" });
+};
   
 export const deletePersonById = async (req: Request, res: Response)=> {
-    const id = req.params.id;
-    const person = await personService.getPersonById(id);
+  const id = req.params.id;
+  const person = await personService.getPersonById(id);
+  personService.deletePersonById(id);
+  res.sendStatus(200);
+  }
 
-    if (!person) {
-      Logger.error(`Person with ID ${id} not found.`);
-      res.status(404).json({ error: 'Person not found' });
-
-    } else {
-      Logger.info(`Person with ID ${id} deleted.`);
-      personService.deletePersonById(id);
-      res.sendStatus(200);
-    }
-  };
 
 /** Dummy Method to get all persons */
 export const getAllPersons = async (req: Request, res: Response)=> {
-    const allPersons = await personService.getAllPersons();
-    Logger.info(`Retrieved all Peoples`);
-    res.json(allPersons);
-  };
+  Logger.info(`[${req.method}] ${req.url}`);
+  const allPersons = await personService.getAllPersons();
+  Logger.info(`Retrieved all Peoples`);
+  res.json(allPersons);
+};
 
 /** Helper function to check for duplicate emails, emails should be unique */
 export const checkEmailExists = async (email: string) => {
@@ -63,7 +52,17 @@ export const checkEmailExists = async (email: string) => {
   } else {
     return true;
   }
-  };
+};
+
+/** Helper function to check ID Exists */
+export const checkIdExists = async(id: string) => {
+  const existingPerson = await personService.getPersonById(id);
+  if (!existingPerson) {
+    return false;
+  } else {
+    return true;
+  }
+};
 
 export default {
     getPersonById,
@@ -71,4 +70,5 @@ export default {
     deletePersonById,
     getAllPersons,
     checkEmailExists,
+    checkIdExists,
   };

@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 
 /** Implemented as a static function to track API calls need not be instantiated since state is not essential */
-/** To Log the API Calls */
+/** A simple logging service to trace the req and res */
 export class Logger {
   static info(message: string): void {
     console.log(`[INFO] ${message}`);
@@ -14,7 +14,7 @@ export class Logger {
 
 export class RequestLogger {
   static log(req: Request, res: Response, next: NextFunction): void {
-    Logger.info(`[${req.method}] ${req.url}`);
+    Logger.info(`[${req.method}] ${req.url} `);
     next();
   }
 }

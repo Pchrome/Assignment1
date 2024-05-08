@@ -29,10 +29,8 @@ export class EmailService implements EmailServiceInterface {
         text: `Person of Phone Number ${person.phoneNumber} has been created!`,
       };
       await mailTransporter.sendMail(mailDetails);
-      Logger.info('Email sent');
     } catch (err) {
       console.log(err)
-      Logger.error('Error sending email');
       throw new Error('Failed to send email');
     }
   };
