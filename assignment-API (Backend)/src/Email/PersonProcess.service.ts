@@ -19,7 +19,7 @@ export class EmailService implements EmailServiceInterface {
         service: "gmail",
         auth: {
           user: "laplacecapstone4103@gmail.com",
-          pass: process.env.GMAIL_APP_PASSWORD, /** Password is stored on a local .env file for security reasons. Others will have no access */
+          pass:  process.env.GMAIL_APP_PASSWORD, /** Password is stored on a local .env file for security reasons. Others will have no access  */
         },
       });
       const mailDetails = {

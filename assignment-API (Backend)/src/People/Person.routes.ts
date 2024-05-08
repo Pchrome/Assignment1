@@ -28,7 +28,6 @@ const validatePersonId = async(req: express.Request, res: express.Response, next
 const validateNewPerson = async(req: express.Request, res: express.Response, next: express.NextFunction)=> {
     Logger.info(`[${req.method}] ${req.url}`);
     const { email, phoneNumber } = req.body;
-    /** Add your validation logic for email and phone number here */
     if (!email || !phoneNumber) {
         Logger.error(`Email and phoneNumber are required`);
         return res.status(400).json({ message: "Email and phoneNumber are required" });
