@@ -18,9 +18,8 @@ npx jest
 ```
 ***
 
-Deployment To Cloud:
-Using fly.io
-Deployment can be done through the vercel user interface
+Deployment To Cloud using fly.io:
+Deployment can be done through the fly.io CLI
 1. git clone https://github.com/Pchrome/assignment1.git
 2. cd to project root directory
 3. fly launch --now
